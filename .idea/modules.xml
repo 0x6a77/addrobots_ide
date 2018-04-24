@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/addrobots_container.iml" filepath="$PROJECT_DIR$/addrobots_container.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/addrobots_container_main.iml" filepath="$PROJECT_DIR$/.idea/modules/addrobots_container_main.iml" group="addrobots_container" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/addrobots_container_test.iml" filepath="$PROJECT_DIR$/.idea/modules/addrobots_container_test.iml" group="addrobots_container" />
+    </modules>
+  </component>
+</project>
