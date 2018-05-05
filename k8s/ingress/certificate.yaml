@@ -1,0 +1,18 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: {{we.addrobots.com}} 
+  namespace: default
+spec:
+  secretname: tls-cert
+  issuerRef:
+    name: letsencrypt-prod
+  commonName: {{we.addrobots.com}}
+  dnsNames:
+  - {{we.addrobots.com}} 
+  acme:
+    config:
+    - dns01:
+        provider: prod-dns
+      domains:
+      - {{we.addrobots.com}} 

@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-resource
+#  namespace: we
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.org/websocket-services: "ws-svc"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /message
+        backend:
+          serviceName: demo
+          servicePort: 8080
+#      - path: /api/websocket
+#        backend:
+#          serviceName: ws-svc
+#          servicePort: 8008
