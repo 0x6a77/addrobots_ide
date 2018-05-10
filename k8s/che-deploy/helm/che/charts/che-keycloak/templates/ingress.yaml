@@ -15,6 +15,11 @@ metadata:
     {{ .Values.global.ingressAnnotationsPrefix }}ingress.kubernetes.io/proxy-connect-timeout: "3600"
 {{- if .Values.global.tls.enabled }}
     {{ .Values.global.ingressAnnotationsPrefix }}ingress.kubernetes.io/ssl-redirect: "true"
+#    {{ .Values.global.ingressAnnotationsPrefix }}ingress.kubernetes.io/secure-backends: "true"
+#    {{ .Values.global.ingressAnnotationsPrefix }}ingress.kubernetes.io/ssl-passthrough: "true"
+#    {{ .Values.global.ingressAnnotationsPrefix }}ingress.kubernetes.io/force-ssl-redirect: "true"
+#    {{ .Values.global.ingressAnnotationsPrefix }}ingress.kubernetes.io/base-url-scheme: "https"
+#    {{ .Values.global.ingressAnnotationsPrefix }}ingress.kubernetes.io/ingress.allow-http: "false"
     kubernetes.io/tls-acme: "true"
 {{- else }}
     {{ .Values.global.ingressAnnotationsPrefix }}ingress.kubernetes.io/ssl-redirect: "false"
