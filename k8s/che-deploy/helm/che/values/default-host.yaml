@@ -8,4 +8,10 @@
 global:
   multiuser: true
   ingressDomain: we.addrobots.com
-  serverStrategy: default-host
+#  serverStrategy: default-host
+  serverStrategy: single-host
+  tls:
+    enabled: true
+    useCertManager: true
+    useStaging: false
+    secretName: che-tls
