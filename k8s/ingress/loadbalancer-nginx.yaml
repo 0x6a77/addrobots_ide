@@ -12,9 +12,9 @@ spec:
   ports:
   - port: 80
     name: http
-    targetPort: 80
+    targetPort: 8080
   - port: 443
     name: https
-    targetPort: 443
+    targetPort: 8443
   selector:
     group: che-group
