@@ -6,7 +6,7 @@ metadata:
   labels:
     app: nginx-ingress-lb
 spec:
-  externalTrafficPolicy: Local
+  externalTrafficPolicy: Cluster
   type: LoadBalancer
   loadBalancerIP: 35.197.3.183
   ports:
@@ -17,4 +17,4 @@ spec:
     name: https
     targetPort: 443
   selector:
-    app: che
+    group: che-group

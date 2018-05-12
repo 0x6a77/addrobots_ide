@@ -4,7 +4,7 @@ metadata:
   name: we-addrobots-com 
   namespace: we
 spec:
-  secretname: tls-cert
+  secretname: che-tls
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer

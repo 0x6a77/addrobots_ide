@@ -23,6 +23,7 @@ spec:
     metadata:
       labels:
         app: che
+        group: che-group
     spec:
       initContainers:
 {{- if .Values.global.multiuser }}
@@ -120,6 +121,11 @@ spec:
           valueFrom:
             configMapKeyRef:
               key: CHE_INFRA_KUBERNETES_POD_SECURITY__CONTEXT_FS__GROUP
+              name: che
+        - name: CHE_INFRA_KUBERNETES_POD_TERMINATION__GRACE__PERIOD__SEC
+          valueFrom:
+            configMapKeyRef:
+              key: CHE_INFRA_KUBERNETES_POD_TERMINATION__GRACE__PERIOD__SEC
               name: che
         - name: JAVA_OPTS
           valueFrom:
@@ -239,8 +245,8 @@ spec:
             path: /api/system/state
             port: 8080
             scheme: HTTP
-          initialDelaySeconds: 120
-          timeoutSeconds: 10
+          initialDelaySeconds: 480
+          timeoutSeconds: 60
         name: che
         ports:
         - containerPort: 8080
