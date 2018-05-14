@@ -1,0 +1,68 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: we-addrobots-ingress
+  namespace: we
+  annotations:
+    ingress.kubernetes.io/ingress.class: "nginx"
+    ingress.kubernetes.io/ingress.global-static-ip-name: "we-addrobots-com"
+    ingress.kubernetes.io/static-ip: "we-addrobots-com"
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  labels:
+    app: addrobots
+spec:
+  tls:
+  - hosts:
+    - we.addrobots.com
+    secretName: che-tls
+  rules:
+  - host: we.addrobots.com
+    http:
+      paths:
+      - path: /*
+        backend:
+          serviceName: che-host-backend
+          servicePort: 8080
+      - path: /auth/*
+        backend:
+          serviceName: keycloak-backend
+          servicePort: 5050
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: keycloak-backend
+  namespace: we
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  labels:
+    app: keycloak-backend
+spec:
+  type: NodePort
+  selector:
+    io.kompose.service: keycloak
+#    tier: web
+  ports:
+  - port: 5050
+    targetPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: che-host-backend
+  namespace: we
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  labels:
+    app: che-host-backend
+spec:
+  type: NodePort
+  selector:
+    app: che
+#    tier: web
+  ports:
+  - port: 8080
+    targetPort: 8080
