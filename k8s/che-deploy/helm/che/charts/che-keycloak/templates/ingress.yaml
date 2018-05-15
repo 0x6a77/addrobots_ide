@@ -15,7 +15,6 @@ metadata:
     {{ .Values.global.ingressAnnotationsPrefix }}ingress.kubernetes.io/proxy-connect-timeout: "3600"
 {{- if .Values.global.tls.enabled }}
     {{ .Values.global.ingressAnnotationsPrefix }}ingress.kubernetes.io/ssl-redirect: "true"
-#    {{ .Values.global.ingressAnnotationsPrefix }}ingress.kubernetes.io/ssl-passthrough: "true"
     kubernetes.io/tls-acme: "true"
 {{- else }}
     {{ .Values.global.ingressAnnotationsPrefix }}ingress.kubernetes.io/ssl-redirect: "false"
