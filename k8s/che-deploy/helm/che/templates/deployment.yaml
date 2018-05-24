@@ -122,11 +122,6 @@ spec:
             configMapKeyRef:
               key: CHE_INFRA_KUBERNETES_POD_SECURITY__CONTEXT_FS__GROUP
               name: che
-        - name: CHE_INFRA_KUBERNETES_POD_TERMINATION__GRACE__PERIOD__SEC
-          valueFrom:
-            configMapKeyRef:
-              key: CHE_INFRA_KUBERNETES_POD_TERMINATION__GRACE__PERIOD__SEC
-              name: che
         - name: JAVA_OPTS
           valueFrom:
             configMapKeyRef:
@@ -246,7 +241,7 @@ spec:
             port: 8080
             scheme: HTTP
           initialDelaySeconds: 480
-          timeoutSeconds: 60
+          timeoutSeconds: 10
         name: che
         ports:
         - containerPort: 8080

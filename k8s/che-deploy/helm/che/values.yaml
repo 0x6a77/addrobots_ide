@@ -18,7 +18,7 @@ cheKeycloakClientId: "che-public"
 
 
 global:
-  cheNamespace: ""
+  cheNamespace: "we"
   multiuser: false
   ingressDomain: 192.168.99.100.nip.io
   # See --annotations-prefix flag (https://github.com/kubernetes/ingress-nginx/blob/master/docs/user-guide/cli-arguments.md)
@@ -30,3 +30,5 @@ global:
     useCertManager: true
     useStaging: true
     secretName: che-tls
+  gitHubClientID: 'x6a77'
+  gitHubClientSecret: ''
