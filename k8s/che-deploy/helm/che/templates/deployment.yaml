@@ -23,7 +23,6 @@ spec:
     metadata:
       labels:
         app: che
-        group: che-group
     spec:
       initContainers:
 {{- if .Values.global.multiuser }}
@@ -174,11 +173,6 @@ spec:
             configMapKeyRef:
               key: CHE_INFRA_KUBERNETES_NAMESPACE
               name: che
-        - name: CHE_INFRA_KUBERNETES_PROJECT
-          valueFrom:
-            configMapKeyRef:
-              key: CHE_INFRA_KUBERNETES_PROJECT
-              name: che
         - name: CHE_LOCAL_CONF_DIR
           valueFrom:
             configMapKeyRef:
@@ -245,7 +239,7 @@ spec:
             path: /api/system/state
             port: 8080
             scheme: HTTP
-          initialDelaySeconds: 480
+          initialDelaySeconds: 120
           timeoutSeconds: 10
         name: che
         ports:
